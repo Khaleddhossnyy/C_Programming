@@ -21,7 +21,7 @@ typedef struct struct_1{
 }Bank_Account;
 //-----------------Admin functions---------------
 void Create_IMT_Bank_Account(Bank_Account *Pointer_To_Bank_Account); //function to creat a bank account
-u8 Admin_Check(u8 *Pointer_To_Name_To_Search_For,u32 Password_To_Check_for); //function to check for admin nmae and password
+u8 Admin_Check(u8 *Pointer_To_Name_To_Search_For,u32 Password_To_Check_for,u16 Size_Of_Name); //function to check for admin nmae and password
 Bank_Account Set_user_Data(Bank_Account *ptr_to_user_Data_Array_Struct,Bank_Account *User_Data_struct, u16 Client_Number);//function to set the data of each client in it's loc
 u8 Bank_Account_ID_Check (u32 Bank_Account_ID_To_Check_For,Bank_Account *ptr_to_user_Data_Array_Struct); //checking if the entered bank account id is valid or not
 u8 Make_A_Transaction(u32 Sending_Bank_Account_ID,Bank_Account *ptr_to_user_Data_Array_Struct); //function to allow for makking a transaction

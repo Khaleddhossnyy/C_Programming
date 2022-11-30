@@ -5,7 +5,7 @@
 #include <string.h>
 
 //----------------------------------------------------------------
-u8 Admin_Namee[6]="Khaled";
+u8 Admin_Namee[7]="Khaled";
 u32 Admin_Passwordd =1581999;
 //--------------Implmenting admin functions-----------------------
 void Create_IMT_Bank_Account(Bank_Account *Pointer_To_Bank_Account)
@@ -62,10 +62,10 @@ void Create_IMT_Bank_Account(Bank_Account *Pointer_To_Bank_Account)
 	Pointer_To_Bank_Account->Password = rand() % (1000000 + 1 - 1000) + 1000;  //generate a random number from 1000 to 1000000
 }
 //---------------------------------------------------------------------------------------
-u8 Admin_Check(u8 *Pointer_To_Name_To_Search_For,u32 Password_To_Check_for)
+u8 Admin_Check(u8 *Pointer_To_Name_To_Search_For,u32 Password_To_Check_for,u16 Size_Of_Name)
 {
     //printf("%d\n",Password_To_Check_for);
-	for (int i=0;i<strlen(Admin_Namee);i++) //for loop to check for the admin Name
+	for (int i=0;i<Size_Of_Name;i++) //for loop to check for the admin Name
 	{
 		while(Pointer_To_Name_To_Search_For[i] != Admin_Namee[i])
 		{

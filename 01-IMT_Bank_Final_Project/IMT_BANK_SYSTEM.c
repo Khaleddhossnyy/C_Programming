@@ -9,10 +9,11 @@ u8 Operating_Option;  //0 for admin and 1 for client
 
 u8 Admin_Checker; // to check if the entered admin is a valid or not
 u8 Admin_Mode; // bool to save the admin mode status
-u8 Admin[6];  //admin name
+u8 Admin[50];  //admin name
 u8 Admin_Choice; // to save what is the oeration the admin wants to do
 u8 Admin_Choice_inside; // to choose between Making a transaction, changing account status ,..etc
 u32 Admin_Pass; //admin password
+u16 Admin_Name_Size;
 
 u8 Client_Mode;
 
@@ -47,18 +48,19 @@ while(1) //to return to home page
 	if (Operating_Option == 0) //admin mode is needed
 	{
 		printf(" Please enter your admin name here : ");
-		scanf("%s",&Admin);
-		//printf("%c\n",Admin[0]);
+		scanf(" %[^\n]",&Admin);
+		Admin_Name_Size = strlen(Admin);
+		
 		
 		printf(" Please enter your admin password here : ");
 		scanf("%d",&Admin_Pass);
 		printf("\n");
 		
-		Admin_Checker = Admin_Check(Admin,Admin_Pass);
+		Admin_Checker = Admin_Check(Admin,Admin_Pass,Admin_Name_Size);
 		//printf("%d",Admin_Checker);
 		while (Admin_Checker == 0) //not approved admin , so keep entering the admin name  and password until they match the correct ones
 		{
-			Admin_Checker = Admin_Check(Admin,Admin_Pass);
+			Admin_Checker = Admin_Check(Admin,Admin_Pass,Admin_Name_Size);
 			//printf("%d",Admin_Checker);
 			if(Admin_Checker == 1) //admin_approved
 			{
@@ -67,7 +69,8 @@ while(1) //to return to home page
 			}
 			printf("!!!! Admin name or password is incorrect please try entering both correct again \n");
 			printf(" Please enter your admin name here : ");
-			scanf("%s",&Admin);
+			scanf(" %[^\n]",&Admin);
+			Admin_Name_Size = strlen(Admin);
 			printf(" Please enter your admin password here : ");
 			scanf("%d",&Admin_Pass);
 			printf("\n");
